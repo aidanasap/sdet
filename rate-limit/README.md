@@ -15,6 +15,7 @@ Token Bucket
 Почему Token Bucket?
 Простая реализация, гибкий контроль и работает
 
+![](app/rate.png)
 
 Конфигурация в main.py:
 rate_limiter = TokenBucket(capacity=5, refill_rate=1)
