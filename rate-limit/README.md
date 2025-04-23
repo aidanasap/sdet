@@ -1,23 +1,36 @@
 
-Этот rate limiting с использованием Token Bucket. 
+Этот микросервис реализует **rate limiting** с использованием алгоритма **Token Bucket**.
 
-Использовано:
-Python3,FastAPI, Middleware FastAPI
-Uvicorn (ASGI-сервер)
-Token Bucket
+---
 
-Принцип работы:
-Есть capacity с токенами.
-Токены пополняются с каким-то rate.
-При каждом запросе -1 токен.
-Если токенов нет — запрос отклоняется.
+##  Использовано
 
-Почему Token Bucket?
+- **Python 3**
+- **FastAPI, Middleware FastAPI**
+- **Uvicorn** (ASGI-сервер)
+- **Token Bucket**
+
+---
+
+##  Принцип работы Token Bucket
+
+1. Есть `capacity` — максимальное количество токенов в "ведре".
+2. Токены пополняются с определённой скоростью (`refill_rate`).
+3. Каждый запрос потребляет **1 токен**.
+4. Если токенов нет — запрос **отклоняется** (`429 Too Many Requests`).
+
+---
+
+## Почему Token Bucket?
+
 Простая реализация, гибкий контроль и работает
 
-![](app/rate.png)
 
-Конфигурация в main.py:
+![Token Bucket Diagram](/rate.png)
+
+---
+
+## Конфигурация (main.py)
+
+```python
 rate_limiter = TokenBucket(capacity=5, refill_rate=1)
-5 — максимальное количество токенов
-1 — токены пополняются со скоростью 1 токен в секунду
