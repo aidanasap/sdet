@@ -26,7 +26,7 @@
 Простая реализация, гибкий контроль и работает
 
 
-![Token Bucket Diagram](/rate.png)
+![Token Bucket Diagram](/rate-limit/rate.png)
 
 ---
 
